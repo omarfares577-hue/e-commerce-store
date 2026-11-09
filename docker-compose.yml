@@ -1,0 +1,27 @@
+
+services:
+  webapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: store_api
+    ports:
+      - "8082:8080"
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:8080
+      - ASPNETCORE_ENVIRONMENT=Development
+    env_file:
+      - .env
+    dns: [8.8.8.8, 1.1.1.1]
+    restart: always
+    depends_on:
+      - mssql
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: local_sql_server
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrongPassword123!
+    ports:
+      - "1435:1433"
+    restart: always

@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/Docker/">
+    <File Path=".env" />
+    <File Path="docker-compose.yml" />
+    <File Path="Dockerfile" />
+  </Folder>
+  <Folder Name="/Source/">
+    <Project Path="Store.API/Store.API.csproj" />
+    <Project Path="Store.Application/Store.Application.csproj" />
+    <Project Path="Store.Domain/Store.Domain.csproj" />
+    <Project Path="Store.Infrastructure/Store.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Store.IntegrationTest/Store.IntegrationTest.csproj" Id="9640c528-cf7c-402b-b9cb-24eaf22e6c35" />
+    <Project Path="Store.UnitTests/Store.UnitTests.csproj" Id="785f0fe0-a5f0-45aa-81c9-1434b6ecf9e8" />
+  </Folder>
+</Solution>

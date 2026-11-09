@@ -1,0 +1,34 @@
+[
+  {
+    "BuyerEmail": "faresomar577@gmail.com",
+    "ShippingAddress": {
+      "FirstName": "Fares",
+      "LastName": "Omar",
+      "Street": "123 Main Street",
+      "City": "Cairo",
+      "State": "Cairo",
+      "ZipCode": "12345"
+    },
+    "Subtotal": 350.00,
+    "OrderItems": [
+      {
+        "ItemOrdered": {
+          "ProductItemId": 1,
+          "ProductName": "Smart Watch Ultra",
+          "PictureUrl": "images/products/sb-ang1.png"
+        },
+        "Price": 200.00,
+        "Quantity": 1
+      },
+      {
+        "ItemOrdered": {
+          "ProductItemId": 3,
+          "ProductName": "Running Shoes",
+          "PictureUrl": "images/products/hat-core1.png"
+        },
+        "Price": 150.00,
+        "Quantity": 1
+      }
+    ]
+  }
+]

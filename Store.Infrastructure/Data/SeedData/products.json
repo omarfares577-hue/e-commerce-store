@@ -1,0 +1,65 @@
+[
+  {
+    "Name": "Smart Watch Ultra",
+    "Description": "High quality smart watch with heart rate tracking",
+    "Price": 2500.00,
+    "CategoryId": 1,
+    "PictureUrl": "https://example.com/images/smartwatch.jpg"
+  },
+  {
+    "Name": "Wireless Headphones",
+    "Description": "Noise cancelling over-ear Bluetooth headphones",
+    "Price": 1800.00,
+    "CategoryId": 1,
+    "PictureUrl": "https://example.com/images/headphones.jpg"
+  },
+  {
+    "Name": "Running Shoes",
+    "Description": "Comfortable athletic shoes for daily running",
+    "Price": 950.00,
+    "CategoryId": 2,
+    "PictureUrl": "https://example.com/images/running-shoes.jpg"
+  },
+  {
+    "Name": "Leather Wallet",
+    "Description": "Genuine leather slim wallet for men",
+    "Price": 350.00,
+    "CategoryId": 2
+  },
+  {
+    "Name": "Coffee Maker Machine",
+    "Description": "Automatic espresso and cappuccino coffee maker",
+    "Price": 3200.00,
+    "CategoryId": 3
+  },
+  {
+    "Name": "Blender Smoothies",
+    "Description": "High speed kitchen blender with glass jar",
+    "Price": 1200.00,
+    "CategoryId": 3
+  },
+  {
+    "Name": "Programming C# Book",
+    "Description": "Comprehensive guide to C# and .NET development",
+    "Price": 450.00,
+    "CategoryId": 4
+  },
+  {
+    "Name": "Clean Architecture Guide",
+    "Description": "Learn modern software architecture patterns",
+    "Price": 600.00,
+    "CategoryId": 4
+  },
+  {
+    "Name": "Yoga Mat Non-Slip",
+    "Description": "Thick fitness yoga mat for home workouts",
+    "Price": 300.00,
+    "CategoryId": 5
+  },
+  {
+    "Name": "Adjustable Dumbbell Set",
+    "Description": "Heavy duty adjustable weight dumbbells for gym",
+    "Price": 2100.00,
+    "CategoryId": 5
+  }
+]
