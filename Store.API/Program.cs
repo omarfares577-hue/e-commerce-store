@@ -35,9 +35,13 @@ namespace Store.API
             .CreateLogger();
             try
             {
+
                 Log.Information("Starting web application");
+
                 var builder = WebApplication.CreateBuilder(args);
+
                 builder.Host.UseSerilog();
+                builder.WebHost.UseUrls("http://0.0.0.0:8080");
                 builder.Services.AddControllers();
                 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
                 builder.Services.Configure<ApiBehaviorOptions>(options =>
@@ -201,9 +205,12 @@ namespace Store.API
                     await next();
                 });
 
-                    app.UseSwagger();
-                    app.UseSwaggerUI();
-
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                    c.RoutePrefix = string.Empty; 
+                });
 
                 app.UseStaticFiles();
 
@@ -259,24 +266,23 @@ namespace Store.API
 
 
 
-                    using (var scope = app.Services.CreateScope())
+                using (var scope = app.Services.CreateScope())
+                {
+                    var services = scope.ServiceProvider;
+                    try
                     {
-                        var services = scope.ServiceProvider;
-                        try
-                        {
-                            var context = services.GetRequiredService<StoreDbContext>();
-                        try { await context.Database.MigrateAsync(); }
-                        catch (Exception ex) { Console.WriteLine("MIGRATE ERROR: " + ex.Message); }
+                        var context = services.GetRequiredService<StoreDbContext>();
                         context.Database.SetCommandTimeout(60);
-                        await StoreContextSeed.SeedAsync(context);   // يتنفذ حتى لو الـ migrate فشل
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine("=== SEED ERROR ===");
-                            Console.WriteLine(ex.ToString());
-                        }
+
+                        await context.Database.MigrateAsync();
+                        await StoreContextSeed.SeedAsync(context);
                     }
-                
+                    catch (Exception ex)
+                    {
+                        var logger = services.GetRequiredService<ILogger<Program>>();
+                        logger.LogError(ex, "An error occurred while migrating or seeding the database.");
+                    }
+                }
                 app.Run();
             }
             catch (Exception ex)

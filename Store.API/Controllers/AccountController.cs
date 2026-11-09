@@ -125,9 +125,8 @@ namespace Store.API.Controllers
                     var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
                     var encodedToken = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(resetToken));
                     Console.WriteLine($"RAW TOKEN: {resetToken}");
-                    var reactivateLink =
-                        $"https://localhost:7209/api/Account/reset-password?email={Uri.EscapeDataString(user.Email!)}&token={encodedToken}";
-
+                    var baseUrl = $"{Request.Scheme}://{Request.Host}";
+                    var reactivateLink = $"{baseUrl}/api/Account/reset-password?email={Uri.EscapeDataString(user.Email!)}&token={encodedToken}";
                     var email = EmailTemplates.GetAccountBannedEmailTemplate(user.DisplayName, reactivateLink);
                     await _emailService.SendEmailAsync(user.Email!, "Security Alert: Account Permanently Banned", email);
 
@@ -205,9 +204,8 @@ namespace Store.API.Controllers
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             var encodedToken = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
 
-            var resetlink =
-                $"https://localhost:7209/api/Account/reset-password?email={Uri.EscapeDataString(user.Email!)}&token={encodedToken}";
-
+            var baseUrl = $"{Request.Scheme}://{Request.Host}";
+            var resetlink = $"{baseUrl}/api/Account/reset-password?email={Uri.EscapeDataString(user.Email!)}&token={encodedToken}";
             var email = EmailTemplates.GetForgotPasswordEmailTemplate(user.DisplayName, resetlink);
             await _emailService.SendEmailAsync(user.Email!, "Reset Password Request", email);
 
