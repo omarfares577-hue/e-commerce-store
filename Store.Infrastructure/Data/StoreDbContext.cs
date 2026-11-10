@@ -16,14 +16,14 @@ namespace Store.Infrastructure.Data
 
 
         public DbSet<DeliveryMethod> DeliveryMethods { get; set; } = null!;
-        //protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
-        //{
-        //    base.ConfigureConventions(configurationBuilder);
+        protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+        {
+           base.ConfigureConventions(configurationBuilder);
 
-        //    configurationBuilder
-        //        .Properties<DateTimeOffset>()
-        //        .HaveConversion<Microsoft.EntityFrameworkCore.Storage.ValueConversion.DateTimeOffsetToBinaryConverter>();
-        //}
+           configurationBuilder
+               .Properties<DateTimeOffset>()
+               .HaveConversion<Microsoft.EntityFrameworkCore.Storage.ValueConversion.DateTimeOffsetToBinaryConverter>();
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
