@@ -21,7 +21,7 @@ namespace Store.Application.Specification
         {
             AddInclude(o => o.OrderItems);
             AddInclude(o => o.DeliveryMethod);
-            AddOrderByDescending(o => o.OrderDate);
+            AddOrderByDescending(o => o.OrderDate.UtcDateTime);
         }
     }
 }
